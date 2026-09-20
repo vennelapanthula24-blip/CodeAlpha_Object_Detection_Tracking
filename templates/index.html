@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>Object Detection</h1>
+       
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <section class="card upload-card">
+        <div class="upload-icon">↑</div>
+        <h2>Upload Image</h2>
+        <p class="muted"></p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input id="image" type="file" name="image"
+                   accept=".jpg,.jpeg,.png" required>
+
+            <button type="submit" class="detect-button">
+                Detect Objects
+            </button>
+        </form>
+
+       
+    </section>
+
+    <section class="card image-card">
+        <h2>Detected Image</h2>
+
+        {% if result_image %}
+            <div class="image-wrapper">
+                <img src="{{ url_for('static', filename='results/' + result_image) }}"
+                     alt="Detected objects">
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <div class="empty-icon"></div>
+                <h3>No image uploaded</h3>
+                <p>Upload an image to see the detected objects here.</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <aside>
+        <section class="card objects-card">
+            <h2>Detected Objects</h2>
+
+            {% if object_counts %}
+                {% for name, count in object_counts.items() %}
+                    <div class="object-row">
+                        <span class="object-name">{{ name }}</span>
+                        <span class="count">{{ count }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="muted">No objects detected yet.</p>
+            {% endif %}
+        </section>
+
+        <section class="card details-card">
+            <h2>Image Details</h2>
+
+            {% if result_image %}
+                <div class="detail-row">
+                    <span>File Name</span>
+                    <strong>{{ original_name }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Image Size</span>
+                    <strong>{{ image_width }} × {{ image_height }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Total Objects</span>
+                    <strong>{{ total_objects }}</strong>
+                </div>
+
+                <div class="status">Success</div>
+            {% else %}
+                <p class="muted">Image information will appear here.</p>
+            {% endif %}
+        </section>
+    </aside>
+
+</main>
+
+<footer>
+    Object Detection | Built with Python, OpenCV and YOLO
+</footer>
+
+</body>
+</html>
