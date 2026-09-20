@@ -1,23 +1,29 @@
-# Object Detection and Tracking
+# Object Detection & Tracking 🚀
 
-CodeAlpha AI Internship - Task 4.
+A simple **Object Detection web application** built using **Python, Flask, OpenCV, and YOLO**.
 
-Upload a JPG, JPEG, or PNG image and use YOLO to detect supported objects. The result is displayed in a simple web UI with bounding boxes, confidence labels, object counts, and image details.
+## Features
 
-## Supported objects
+* Upload an image
+* Detect objects using YOLO
+* Display bounding boxes and labels
+* Show detection results
 
-- Person
-- Bicycle
-- Car
-- Motorcycle
-- Bus
-- Truck
+## Technologies
 
-## Run locally
+* Python
+* Flask
+* YOLO
+* OpenCV
+* HTML & CSS
+
+## How to Run
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
+git clone https://github.com/vennelapanthula24-blip/CodeAlpha_Object_Detection_Tracking.git
+cd CodeAlpha_Object_Detection_Tracking
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
@@ -25,23 +31,13 @@ python app.py
 Open:
 
 ```text
-http://127.0.0.1:5000/
+http://127.0.0.1:5000
 ```
 
-The YOLO model downloads automatically on the first run.
+## Project
 
-## Render
+Developed as part of my **CodeAlpha Artificial Intelligence Internship**.
 
-Build command:
+## Author
 
-```text
-pip install -r requirements.txt
-```
-
-Start command:
-
-```text
-gunicorn app:app
-```
-
-The application processes uploaded images, so it can run as a web service without accessing a server webcam.
+**Vennela Panthula**
